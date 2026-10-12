@@ -3,18 +3,324 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>The Pilgrimage of 1480</title>
+  <meta
+    name="description"
+    content="Interactive reconstructions and comparative readings of four accounts of the 1480 pilgrimage to Jerusalem."
+  >
+
+  <style>
+    :root {
+      --paper: #f3efe6;
+      --ink: #203437;
+      --muted: #687779;
+      --teal: #174e59;
+      --ochre: #a9693d;
+      --line: #cbc6ba;
+      --panel: rgba(255, 255, 255, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--paper);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(32, 52, 55, 0.035) 1px, transparent 1px);
+      background-size: 100% 4rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 4.5rem;
+      padding: 0 5vw;
+      color: white;
+      background: var(--teal);
+      border-bottom: 4px solid var(--ochre);
+    }
+
+    .brand {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .year {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      opacity: 0.75;
+    }
+
+    main {
+      width: min(1120px, 90vw);
+      margin: 0 auto;
+      padding: 9vh 0 7rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 1.2rem;
+      color: var(--ochre);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6.7rem);
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+    }
+
+    h1 em {
+      color: var(--ochre);
+      font-weight: 400;
+    }
+
+    .introduction {
+      max-width: 720px;
+      margin: 2.2rem 0 5.5rem;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      line-height: 1.65;
+    }
+
+    .projects {
+      border-top: 1px solid var(--line);
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 5rem 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 2.7rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      transition:
+        padding-left 160ms ease,
+        color 160ms ease;
+    }
+
+    .project:hover,
+    .project:focus-visible {
+      padding-left: 1rem;
+      color: var(--teal);
+      outline: none;
+    }
+
+    .number {
+      color: var(--ochre);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .project h2 {
+      margin: 0 0 0.65rem;
+      font-size: clamp(1.65rem, 3vw, 2.65rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .project p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .arrow {
+      display: grid;
+      width: 2.8rem;
+      height: 2.8rem;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.15rem;
+      transition:
+        background 160ms ease,
+        color 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .project:hover .arrow,
+    .project:focus-visible .arrow {
+      color: white;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .method {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      margin-top: 5.5rem;
+      padding: 2.5rem;
+      background: var(--panel);
+      border-left: 3px solid var(--ochre);
+    }
+
+    .method h2 {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .method p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      width: min(1120px, 90vw);
+      margin: 0 auto;
+      padding: 1.8rem 0 2.5rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 0 1.25rem;
+      }
+
+      main {
+        width: calc(100% - 2.5rem);
+        padding-top: 4.5rem;
+      }
+
+      .introduction {
+        margin-bottom: 3.5rem;
+      }
+
+      .project {
+        grid-template-columns: 2.5rem 1fr;
+        gap: 1rem;
+      }
+
+      .arrow {
+        display: none;
+      }
+
+      .method {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      footer {
+        width: calc(100% - 2.5rem);
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <p class="brand">Pilgrimage / 1480</p>
+    <span class="year">Research prototypes</span>
+  </header>
+
   <main>
-    <h1>The Pilgrimage of 1480</h1>
-    <p>Interactive reconstructions and comparative readings.</p>
+    <section aria-labelledby="page-title">
+      <p class="eyebrow">Four pilgrims · one shared journey</p>
 
-    <h2><a href="barbatre/">Pierre Barbatre’s itinerary</a></h2>
-    <p>A chronological and sensory reconstruction of the journey.</p>
+      <h1 id="page-title">
+        The pilgrimage<br>
+        of <em>1480.</em>
+      </h1>
 
-    <h2><a href="comparison/">Four pilgrimage narratives</a></h2>
-    <p>A comparative beta for Barbatre, Fabri, Brasca and the anonymous pilgrim.</p>
+      <p class="introduction">
+        Interactive reconstructions of a late-medieval journey to Jerusalem,
+        bringing together places, chronology, sensory descriptions and four
+        accounts of the same pilgrimage.
+      </p>
+    </section>
+
+    <nav class="projects" aria-label="Explore the projects">
+      <a class="project" href="barbatre/">
+        <span class="number">01</span>
+
+        <div>
+          <h2>Pierre Barbatre’s itinerary</h2>
+          <p>
+            Follow Barbatre from Vernon to Jerusalem through an interactive
+            map, narrative timeline, travel evidence and selected sensory
+            descriptions.
+          </p>
+        </div>
+
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="project" href="comparison/">
+        <span class="number">02</span>
+
+        <div>
+          <h2>Four pilgrimage narratives</h2>
+          <p>
+            Compare Barbatre, Felix Fabri, Santo Brasca and an anonymous
+            French pilgrim before Venice and during their shared voyage.
+          </p>
+        </div>
+
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <aside class="method">
+      <h2>About the project</h2>
+      <p>
+        These prototypes combine close reading, semantic annotation,
+        itinerary reconstruction and computational comparison. Locations,
+        dates and passage alignments remain provisional where the surviving
+        evidence is uncertain.
+      </p>
+    </aside>
   </main>
+
+  <footer>
+    <span>Late-medieval pilgrimage narratives</span>
+    <span>Digital research in progress</span>
+  </footer>
 </body>
 </html>
