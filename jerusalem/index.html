@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jerusalem itineraries · Pilgrimage 1480</title>
+  <link rel="stylesheet" href="city.css">
+</head>
+<body data-city="jerusalem">
+<header>
+  <a class="brand" href="../index.html">✧ PILGRIMAGE / 1480</a>
+  <nav>
+    <a href="../venice/" data-city="venice">Venice</a>
+    <a href="../jerusalem/" data-city="jerusalem">Jerusalem</a>
+    <a href="../comparison/">Shared voyage ↗</a>
+  </nav>
+</header>
+<main>
+  <section class="intro"><div><p id="kicker" class="eyebrow"></p><h1 id="title"></h1></div><p id="method"></p></section>
+  <section class="app">
+    <aside><div class="tabs"><button data-view="itinerary" class="active">Itineraries</button><button data-view="encounters">Encounter scenarios</button><button data-view="interests">Interests</button></div><div id="controls"></div><div id="panel"></div></aside>
+    <div class="map-column"><div class="map-tools"><strong id="mapTitle"></strong><span>Drag to pan · scroll or use buttons to zoom</span></div><div id="viewport"><div id="stage"><img id="historicMap" alt=""><svg id="overlay" viewBox="0 0 100 100" preserveAspectRatio="none"></svg><div id="markers"></div></div><div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="reset">Fit</button></div><div id="tooltip"></div><article id="sourcePanel" class="source-panel" aria-live="polite"><button id="closeSource" aria-label="Close passage">×</button><p class="source-label">SOURCE PASSAGE</p><h3 id="sourceHeading"></h3><p id="sourceMeta"></p><blockquote id="sourceText"></blockquote></article></div><p class="map-note" id="mapNote"></p></div>
+  </section>
+  <section class="timeline-section" aria-labelledby="timelineTitle">
+    <div class="timeline-head"><div><p class="eyebrow">CITY CHRONOLOGY</p><h2 id="timelineTitle">Time and movement</h2></div><div class="timeline-key"><span><i class="certain"></i> stated date</span><span><i class="uncertain"></i> approximate or undated</span></div></div>
+    <div id="cityTimeline" class="city-timeline"></div>
+    <div id="timelineDetail" class="timeline-detail">Select a point to locate that visit on the map.</div>
+  </section>
+  <section class="analysis"><div><p class="eyebrow">INTERPRETIVE CAUTION</p><h2>Visits as choices—and as constraints</h2></div><p>Selections can suggest attention, but they also reflect guides, liturgical schedules, social rank, genre and the survival or abbreviation of each text. The interest profiles describe emphasis in these accounts; they are hypotheses about narrative attention, not fixed personalities.</p></section>
+</main>
+<script src="city-data.js"></script><script src="source-texts.js"></script><script src="city.js"></script>
+</body></html>
